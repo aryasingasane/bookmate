@@ -16,9 +16,8 @@ const MyNavbar = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/book/list">Add Listing</Nav.Link>
             <Nav.Link href="/book/orders">Orders</Nav.Link>
-            <Button onClick={firebase.logoutFunction}>Logout</Button>
-
           </Nav>
+        <Button onClick={firebase.logoutFunction}>Logout</Button>
         </Container>
       </Navbar>
     );

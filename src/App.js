@@ -23,7 +23,6 @@ function App() {
         <Route path="/book/list" element={<ListingPage />}></Route>
         <Route path="/book/view/:bookId" element={<BookDetailPage />}></Route>
         <Route path="/book/orders" element={<OrdersPage />}></Route>
-        {/* Hello from Harshal Tupe */}
       </Routes>
     </div>
   );

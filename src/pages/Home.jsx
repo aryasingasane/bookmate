@@ -14,31 +14,25 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="cotainer m-5">
-      {/* <CardGroup> */}
-      {/* <Stack direction="horizontal" gap={2}> */}
-
+    <div className="container m-5" style={{}}>
       <div
-        className="container"
+        className="row"
         style={{
-          backgroundColor: "red",
-          height: "maxContent",
-          width: "maxContent",
+          backgroundColor: "#efedf5",
           display: "flex",
           flexWrap: "wrap",
+          width:"1400px"
         }}
       >
-        <div className="childcontainer" style={{ flex: "33.33%" }}>
-          {books.map((book) => (
-            <BookCard key={book.id} id={book.id} {...book.data()} />
-          ))}
-        </div>
+        {books.map((book) => (
+          <div key={book.id} className="col-md-3 mb-3">
+            <BookCard id={book.id} {...book.data()} />
+          </div>
+        ))}
       </div>
-
-      {/* </Stack> */}
-      {/* </CardGroup> */}
     </div>
   );
+  
 };
 
 export default HomePage;

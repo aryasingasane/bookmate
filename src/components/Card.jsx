@@ -15,25 +15,23 @@ const BookCard = (props) => {
     useEffect( ()=>{
         firebase.getImageURL(props.imgURL).then(url=>setURL(url));
     } ,[]);
-
     console.log(props);
-
-
-  return (
     
+  return (
     <Card style={{ width: "18rem", margin:'15px' }}>
-      <Card.Img variant="top" src={url} />
+      <div style={{ height: "400px", overflow: "hidden" }}>
+        <Card.Img variant="top" src={url} style={{ objectFit: "cover", height: "400px" }} />
+      </div>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>
-          Price : Rs.{props.price} /- 
-          <br></br>
+          Price: Rs.{props.price} /- 
+          <br />
           Sold By: {props.displayName}
         </Card.Text>
         <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary">View</Button>
       </Card.Body>
     </Card>
-
   );
 };
 
