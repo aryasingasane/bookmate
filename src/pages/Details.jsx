@@ -3,6 +3,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useParams } from "react-router-dom";
 import { useFirebase } from "../context/Firebase";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const BookDetailPage = () => {
   const params = useParams();
@@ -14,6 +17,7 @@ const BookDetailPage = () => {
   const [data, setData] = useState(null);
   console.log(data);
   const [url, setURL] = useState(null);
+  const [burl, setBURL] = useState(null);
 
   useEffect(() => {
     firebase.getBookById(params.bookId).then((value) => setData(value.data()));
@@ -26,6 +30,13 @@ const BookDetailPage = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (data) {
+      const pdfURL = data.pdfURL;
+      firebase.getPdfURL(pdfURL).then((burl) => setBURL(burl));
+    }
+  }, [data]);
+
   const placeOrder = async () => {
     const result = await firebase.placeOrder(params.bookId, qty);
     console.log("Order Placed", result);
@@ -34,30 +45,33 @@ const BookDetailPage = () => {
   if (data == null) return <h1>Loading....</h1>;
 
   return (
-    <div className="container mt-5">
-      
-      <img src={url} width="40%" style={{ borderRadius: "10px" }} />
-      <h2>Details:</h2><br></br>
-      <h4>Name: {data.name}</h4>
-      <h4><p>Price: Rs. {data.price}</p>
-      <p>Author Name: {data.author}</p></h4>
-      <br></br>
-      <h2>Owner Details:</h2><br></br>
-      <h4><p>Name: {data.displayName}</p>
-      <p>Email: {data.userEmail}</p></h4>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label><h2>Qty</h2></Form.Label>
-        <Form.Control
-          onChange={(e) => setQty(e.target.value)}
-          value={qty}
-          type="Number"
-          placeholder="Enter Qty"
-        />
-      </Form.Group>
-      <Button onClick={placeOrder} variant="success">
-        Buy Now
-      </Button>
-    </div>
+    <Container>
+    <Row>
+      <Col>
+        <div className="mt-5">
+          <img src={url} width="90%" style={{ borderRadius: "20px" }} />
+        </div>
+      </Col>
+      <Col xs={8}>
+        <div className="mt-5">
+          <h5 className="m-3">Name: {data.name}</h5>
+          <h5><p className="m-3">Release Date: {data.rdate}</p>
+          <p className="m-3">Author Name: {data.author}</p>
+          <p className="m-3">Tropes: {data.trope}</p>
+          <p className="m-3">Description: <br></br> <h6 className="m-2"> {data.desc}</h6></p>
+          </h5>
+          <br></br>
+          <h5 className="m-3">Owner Details:</h5>
+          <h5><p className="m-3">Email: {data.userEmail}</p></h5>
+          <br></br>
+          <Button  variant="success">
+            Download PDF
+          </Button>
+        </div>
+      </Col>
+    </Row>
+    
+  </Container>
   );
 };
 

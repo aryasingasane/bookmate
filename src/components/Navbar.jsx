@@ -20,6 +20,8 @@ const MyNavbar = () => {
         <Button onClick={firebase.logoutFunction}>Logout</Button>
         </Container>
       </Navbar>
+      
+      
     );
 };
 

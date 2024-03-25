@@ -66,17 +66,25 @@ export const FirebaseProvider = (props) => {
 
     console.log("User:",user);
 
-  const handleCreateNewListing = async (name, author, price, coverPic) => {
+  const handleCreateNewListing = async (name, author, rdate, coverPic, desc, bookPdf, trope) => {
     const imageRef = ref(
       storage,
       `uploads/images/${Date.now()}-${coverPic.name}`
     );
+    const pdfRef = ref(
+      storage,
+      `uploads/pdfs/${Date.now()}-${bookPdf.name}`
+    );
     const uploadResult = await uploadBytes(imageRef, coverPic);
+    const uploadResult2 = await uploadBytes(pdfRef, bookPdf);
     await addDoc(collection(firestore, "books"), {
       name,
       author,
-      price,
+      rdate,
+      trope,
+      desc,
       imgURL: uploadResult.ref.fullPath,
+      pdfURL: uploadResult2.ref.fullPath,
       userID: user.uid,
       userEmail: user.email,
       displayName: user.displayName,
@@ -94,6 +102,10 @@ export const FirebaseProvider = (props) => {
   };
 
   const getImageURL = (path) => {
+    return getDownloadURL(ref(storage, path));
+  };
+
+  const getPdfURL = (path) => {
     return getDownloadURL(ref(storage, path));
   };
 
@@ -143,6 +155,7 @@ export const FirebaseProvider = (props) => {
         handleCreateNewListing,
         listAllBooks,
         getImageURL,
+        getPdfURL,
         getBookById,
         placeOrder,
         fetchMyBooks,

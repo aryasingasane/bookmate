@@ -10,17 +10,20 @@ const ListingPage = () => {
 
     const [name, setName] = useState('');
     const [author, setAuthor] = useState('');
-    const [price, setPrice] = useState('');
+    const [rdate, setRdate] = useState('');
     const [coverPic, setCoverPic] = useState('');
+    const [bookPdf, setBookPdf] = useState('');
+    const [desc, setDesc] = useState('');
+    const [trope, setTrope] = useState('');
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      await firebase.handleCreateNewListing(name,author,price,coverPic);
+      await firebase.handleCreateNewListing(name, author, rdate, coverPic, desc, bookPdf, trope);
     };
 
     return(
-        <div className="container mt-5">
-        <h2>List your Book</h2><br></br>
+        <div className="container mt-4">
+        {/* <h2>List your Book</h2><br></br> */}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicBname">
           <Form.Label>Enter Book Name: </Form.Label>
@@ -42,13 +45,33 @@ const ListingPage = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPrice">
-          <Form.Label>Enter Price: </Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicAname">
+          <Form.Label>Genre/Trope: </Form.Label>
           <Form.Control
-            onChange={(e) => setPrice(e.target.value)}
-            value={price}
+            onChange={(e) => setTrope(e.target.value)}
+            value={trope}
             type="text"
-            placeholder="Rs. 1000"
+            placeholder="Enter Genre of the Book"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicAname">
+          <Form.Label>Book Description: </Form.Label>
+          <Form.Control
+            onChange={(e) => setDesc(e.target.value)}
+            value={desc}
+            type="text"
+            placeholder="About the Book"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPrice">
+          <Form.Label>Enter Release Date: </Form.Label>
+          <Form.Control
+            onChange={(e) => setRdate(e.target.value)}
+            value={rdate}
+            type="text"
+            placeholder=""
           />
         </Form.Group>
 
@@ -56,6 +79,14 @@ const ListingPage = () => {
           <Form.Label>Upload Cover Page of the Book: </Form.Label>
           <Form.Control
             onChange={(e) => setCoverPic(e.target.files[0])}
+            type="file"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPhoto">
+          <Form.Label>Upload PDF of the Book: </Form.Label>
+          <Form.Control
+            onChange={(e) => setBookPdf(e.target.files[0])}
             type="file"
           />
         </Form.Group>

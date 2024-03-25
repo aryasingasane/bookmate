@@ -19,15 +19,15 @@ const BookCard = (props) => {
     
   return (
     <Card style={{ width: "18rem", margin:'15px' }}>
-      <div style={{ height: "400px", overflow: "hidden" }}>
-        <Card.Img variant="top" src={url} style={{ objectFit: "cover", height: "400px" }} />
+      <div style={{ height: "450px", overflow: "hidden" }}>
+        <Card.Img variant="top" src={url} style={{ objectFit: "cover", height: "450px" }} />
       </div>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
-        <Card.Text>
-          Price: Rs.{props.price} /- 
+        <Card.Text> 
+          Author: {props.author}
           <br />
-          Sold By: {props.displayName}
+          Sold By: {props.userEmail}
         </Card.Text>
         <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary">View</Button>
       </Card.Body>
