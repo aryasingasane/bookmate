@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useFirebase } from "../context/Firebase";
@@ -58,6 +58,9 @@ const RegisterPage = () => {
         <Button variant="primary" type="submit">
           Create Account
         </Button>
+        <h2 style={{marginTop:"20px"}}>OR</h2>
+        <br></br>
+      <Button onClick={firebase.signinWithGoogle} variant="info">Sign In with Google</Button>
       </Form>
     </div>
   );

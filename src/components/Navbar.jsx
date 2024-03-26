@@ -4,10 +4,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button } from "react-bootstrap";
 import { useFirebase } from "../context/Firebase";
+import {useNavigate, to} from 'react-router-dom';
 
 const MyNavbar = () => {
-
   const firebase = useFirebase();
+  const navigate = useNavigate();
+  const handleLogout = ()=>{
+    firebase.logoutFunction();
+    navigate("/register")
+  }
     return (
         <Navbar bg="dark" data-bs-theme="dark">
         <Container>
@@ -17,7 +22,17 @@ const MyNavbar = () => {
             <Nav.Link href="/book/list">Add Listing</Nav.Link>
             <Nav.Link href="/book/orders">Orders</Nav.Link>
           </Nav>
-        <Button onClick={firebase.logoutFunction}>Logout</Button>
+          <div className="">
+            {
+              firebase.isLoggedIn ? (
+                // <Button onClick={firebase.logoutFunction}>Logout</Button>
+                <Button onClick={handleLogout}>Logout</Button>
+
+              ) : (
+                <Button href="/login" style={{ marginRight: "10px" }}>Login</Button>
+              )
+            }
+        </div>
         </Container>
       </Navbar>
       
