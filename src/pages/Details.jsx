@@ -64,8 +64,10 @@ const BookDetailPage = () => {
           <h5 className="m-3">Owner Details:</h5>
           <h5><p className="m-3">Email: {data.userEmail}</p></h5>
           <br></br>
-          <Button  variant="success">
+          <Button  variant="success" style={{marginBottom:"10px"}}>
+            <a href={burl} style={{textDecoration:"none", color:"white", marginBottom:"10px"}}>
             Download PDF
+            </a>
           </Button>
         </div>
       </Col>
