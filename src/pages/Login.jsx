@@ -80,7 +80,7 @@ const LoginPage = () => {
         <Row>
           <Col>
             <ImageContainer>
-              <ImageBackground src={image3} alt="background" />
+              <ImageBackground src={image3} alt="background" style={{borderRadius:"30px"}} />
               <TextWrapper>
                 <Text>
                   Welcome Back<br></br>
@@ -98,7 +98,7 @@ const LoginPage = () => {
           </Col>
 
           <Col>
-            <div className="container mt-5">
+            <div className="container m-5">
                 <center>
                     <h1>Login Here</h1>
                 </center>
@@ -124,8 +124,13 @@ const LoginPage = () => {
                     />
                     </Form.Group>
 
+                    <br></br>
                     <center>
-                        <Button variant="primary" type="submit">Login</Button>
+                        <Button variant="primary" type="submit" style={{
+                                    width:"200px",
+                                    height:"40px", 
+                                    borderRadius:"15px"
+                                }}>Login</Button>
                     </center>
                 </Form>
 

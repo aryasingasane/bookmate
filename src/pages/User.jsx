@@ -60,7 +60,7 @@ const UserPage = () => {
             <Row>
                 <Col>
                     <ImageContainer>
-                        <ImageBackground src={image3} alt="background" />
+                        <ImageBackground src={image3} alt="background" style={{borderRadius:"30px"}} />
                         <TextWrapper>
                             <Text>
                                 Welcome Back!<br></br>

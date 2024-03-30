@@ -56,7 +56,7 @@ const BookDetailPage = () => {
         <div className="mt-5">
           <h5 className="m-3">Name: {data.name}</h5>
           <h5><p className="m-3">Release Date: {data.rdate}</p>
-          <p className="m-3">Author Name: {data.author}</p>
+          <p className="m-3">Author: {data.author}</p>
           <p className="m-3">Tropes: {data.trope}</p>
           <p className="m-3">Description: <br></br> <h6 className="m-2"> {data.desc}</h6></p>
           </h5>

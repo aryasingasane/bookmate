@@ -25,9 +25,10 @@ const BookCard = (props) => {
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text> 
-          Author: {props.author}
+          Book by {props.author}
           <br />
-          Sold By: {props.userEmail}
+          {/* Sold By: {props.userEmail}
+          Trope: {props.trope} */}
         </Card.Text>
         <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary">View</Button>
       </Card.Body>
