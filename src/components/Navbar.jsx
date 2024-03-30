@@ -19,8 +19,17 @@ const MyNavbar = () => {
           <Navbar.Brand href="/">BookMate</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/book/list">Add Listing</Nav.Link>
-            <Nav.Link href="/book/orders">Orders</Nav.Link>
+            <div className="">
+            {
+              firebase.isLoggedIn ? (
+                <Nav.Link href="/book/list">Add Listing</Nav.Link>
+              ) : (
+                <></>
+              )
+            }
+            </div>
+            {/* <Nav.Link href="/book/list">Add Listing</Nav.Link> */}
+            {/* <Nav.Link href="/book/orders">Orders</Nav.Link> */}
           </Nav>
           <div className="">
             {
@@ -29,7 +38,7 @@ const MyNavbar = () => {
                 <Button onClick={handleLogout}>Logout</Button>
 
               ) : (
-                <Button href="/login" style={{ marginRight: "10px" }}>Login</Button>
+                <Button href="/user" style={{ marginRight: "10px" }}>Signin</Button>
               )
             }
         </div>

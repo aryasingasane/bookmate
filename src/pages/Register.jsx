@@ -29,11 +29,13 @@ const RegisterPage = () => {
 
   return (
     <div className="container mt-5">
-        <h1> Welcome to Bookmate <br></br></h1>
-        <h2>Register Here</h2><br></br>
+      <center>
+        <h2>Create Account</h2><br></br>
+      </center>
+        {/* <h1> Welcome to Bookmate <br></br></h1> */}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email address:</Form.Label>
           <Form.Control
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -46,7 +48,7 @@ const RegisterPage = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Password: </Form.Label>
           <Form.Control
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -55,12 +57,24 @@ const RegisterPage = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Create Account
+        <br></br>
+        <center>
+
+        <Button variant="primary" type="submit" style={{
+                                    width:"200px",
+                                    height:"40px", 
+                                    borderRadius:"15px"
+                                }}>
+          Sign Up
         </Button>
         <h2 style={{marginTop:"20px"}}>OR</h2>
         <br></br>
-      <Button onClick={firebase.signinWithGoogle} variant="info">Sign In with Google</Button>
+      <Button onClick={firebase.signinWithGoogle} variant="info" style={{
+                                    width:"200px",
+                                    height:"40px", 
+                                    borderRadius:"15px"
+                                }}>  Sign In with Google</Button>
+        </center>
       </Form>
     </div>
   );
