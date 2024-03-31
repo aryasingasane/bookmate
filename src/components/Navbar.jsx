@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button } from "react-bootstrap";
 import { useFirebase } from "../context/Firebase";
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 
 const MyNavbar = () => {
   const firebase = useFirebase();
@@ -14,37 +14,46 @@ const MyNavbar = () => {
     navigate("/register")
   }
     return (
-        <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="/">BookMate</Navbar.Brand>
+      <>
+    <Navbar expand="lg" className="bg-body-tertiary" >
+      <Container>
+        <Link to="/" style={{textDecoration:"none"}}>
+        <Navbar.Brand >BookMate</Navbar.Brand>
+        </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            <Link to="/" style={{textDecoration:"none"}}> 
             <Nav.Link href="/">Home</Nav.Link>
+            </Link>
             <div className="">
-            {
-              firebase.isLoggedIn ? (
+             {
+              firebase.isLoggedIn ? ( 
+                <>
+                <Link to="/book/list" style={{textDecoration:"none"}}>
                 <Nav.Link href="/book/list">Add Listing</Nav.Link>
+                </Link>
+                </>
               ) : (
                 <></>
               )
             }
             </div>
-            {/* <Nav.Link href="/book/list">Add Listing</Nav.Link> */}
-            {/* <Nav.Link href="/book/orders">Orders</Nav.Link> */}
           </Nav>
           <div className="">
-            {
-              firebase.isLoggedIn ? (
-                // <Button onClick={firebase.logoutFunction}>Logout</Button>
-                <Button onClick={handleLogout}>Logout</Button>
-
-              ) : (
-                <Button href="/user" style={{ marginRight: "10px" }}>Signin</Button>
-              )
-            }
-        </div>
-        </Container>
-      </Navbar>
-      
+             {
+               firebase.isLoggedIn ? (
+                 <Button onClick={handleLogout}>Logout</Button>
+               ) : (
+                 <Button href="/user" style={{ marginRight: "10px" }}>Signin</Button>
+               )
+             }
+         </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <hr />
+    </>
       
     );
 };

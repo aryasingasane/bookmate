@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useFirebase } from "../context/Firebase";
 import BookCard from "../components/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import Stack from "react-bootstrap/Stack";
+import "../style/Home.scss"
+
 
 const HomePage = () => {
   const firebase = useFirebase();
@@ -14,14 +14,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="container m-5" style={{}}>
+    <div className="container main m-5" style={{}}>
       <div
-        className="row"
+        className="row sub"
         style={{
-          backgroundColor: "#efedf5",
           display: "flex",
           flexWrap: "wrap",
-          width:"1400px"
         }}
       >
         {books.map((book) => (
