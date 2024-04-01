@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from "react";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
-
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../context/Firebase";
@@ -27,8 +25,6 @@ const BookCard = (props) => {
         <Card.Text> 
           Book by {props.author}
           <br />
-          {/* Sold By: {props.userEmail}
-          Trope: {props.trope} */}
         </Card.Text>
         <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary" htmlFor="viewBook">View</Button>
       </Card.Body>
