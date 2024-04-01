@@ -20,7 +20,7 @@ const BookCard = (props) => {
   return (
     <Card style={{ width: "18rem", margin:'15px' }}>
       <div style={{ height: "450px", overflow: "hidden" }}>
-        <Card.Img variant="top" src={url} style={{ objectFit: "cover", height: "450px" }} />
+        <Card.Img onClick={e => navigate(`/book/view/${props.id}`)} htmlFor="viewBook" variant="top" src={url} style={{ objectFit: "cover", height: "450px" }} />
       </div>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
@@ -30,7 +30,7 @@ const BookCard = (props) => {
           {/* Sold By: {props.userEmail}
           Trope: {props.trope} */}
         </Card.Text>
-        <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary">View</Button>
+        <Button onClick={e => navigate(`/book/view/${props.id}`)} variant="primary" htmlFor="viewBook">View</Button>
       </Card.Body>
     </Card>
   );
