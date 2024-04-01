@@ -1,13 +1,17 @@
 .container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     .row{
+        width:"1400px";
         background-color: #efeef1;
-        width:"1400px"
     }
 }
 @media only screen and (max-width: 600px){
     .container{
-        width: 300px;
-        color: green;
+        width: 340px;
         display: flex;
         justify-content: center;
         align-items: center;
