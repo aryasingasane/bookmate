@@ -14,14 +14,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="container main m-5" style={{}}>
-      <div
-        className="row sub"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className="container main ">
+      <div className="row sub">
         {books.map((book) => (
           <div key={book.id} className="col-md-3 mb-3">
             <BookCard id={book.id} {...book.data()} />
